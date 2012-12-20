@@ -58,4 +58,9 @@
         class=".browser.SettingsEditFormView"
         />
 
+	<browser:resourceDirectory
+        name="openmultimedia.headband"
+        directory="resources"
+        />
+
 </configure>

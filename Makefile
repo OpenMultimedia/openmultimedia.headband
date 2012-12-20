@@ -5,6 +5,7 @@ options = -N -q -t 3
 pep8_ignores = E501
 src = src/openmultimedia/headband
 minimum_coverage = 80
+max_complexity = 12
 
 prerequisites:
 	sudo apt-get install -q pep8 pyflakes
@@ -16,7 +17,6 @@ install: prerequisites
 	bin/buildout -c travis.cfg $(options)
 
 tests:
-	pep8 --ignore=$(pep8_ignores) $(src)
-	pyflakes $(src)
+	bin/flake8 --ignore=$(pep8_ignores) --max-complexity=$(max_complexity) $(src)
 	bin/test
 	./coverage.sh $(minimum_coverage)

@@ -1,19 +1,14 @@
-from Acquisition import aq_parent
 from zope.interface import implements
-from zope.component import getMultiAdapter
 from zope.component import getUtility
-from zope.publisher.interfaces import IPublishTraverse, NotFound
+from zope.publisher.interfaces import IPublishTraverse
 from zope.i18nmessageid import MessageFactory
-from z3c.form import button 
+from z3c.form import button
 from z3c.form.interfaces import NOT_CHANGED
 
 from Products.Five.browser import BrowserView
-from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.statusmessages.interfaces import IStatusMessage
 
 from plone.z3cform import layout
-from plone.app.layout.navigation.interfaces import INavigationRoot
-from plone.app.layout.viewlets.common import ViewletBase
 from plone.app.layout.viewlets.common import LogoViewlet as BaseLogoViewlet
 from plone.registry.interfaces import IRegistry
 from plone.app.registry.browser.controlpanel import RegistryEditForm
@@ -33,13 +28,13 @@ class HeadBandViewlet(BaseLogoViewlet):
         setting = registry.forInterface(ISettings)
         if setting.image:
             self.image_tag = '<img src="%s%s" />' % \
-                            (self.context.absolute_url(),
+                             (self.context.absolute_url(),
                              '/@@openmultimedia.headband/image')
 
 
 class HeadBandImage(BrowserView):
     implements(IPublishTraverse)
-    
+
     def __init__(self, context, request):
         """ Initialize context and request as view multiadaption parameters.
 
@@ -53,12 +48,11 @@ class HeadBandImage(BrowserView):
         self.fieldname = None
         self.position = None
         self.subfieldname = None
-        
+
     def publishTraverse(self, request, name):
-        
         if self.fieldname is None:  # ../@@openmultimedia.headband/fieldname
             self.fieldname = name
-        
+
         return self
 
     def __call__(self):
@@ -74,14 +68,14 @@ class SettingsEditForm(RegistryEditForm):
     Define form logic
     """
     schema = ISettings
-    label = u"Learn4Life header settings"
+    label = u"openmultimedia.headband settings"
 
     @button.buttonAndHandler(_(u"Save"), name='save')
     def handleSave(self, action):
         data, _errors = self.extractData()
         if not data['image']:
             data['image'] = NOT_CHANGED
-        _changes = self.applyChanges(data)
+        self.applyChanges(data)
         IStatusMessage(self.request).addStatusMessage(_(u"Changes saved."), "info")
         self.request.response.redirect("%s/%s" % (self.context.absolute_url(), self.control_panel_view))
 

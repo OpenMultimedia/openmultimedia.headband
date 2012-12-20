@@ -23,6 +23,8 @@ eggs/
 include/
 lib/
 local.cfg
+Makefile.local
+travis-local.cfg
 parts/
 src/plone.app.blocks/
 src/plone.app.deco/

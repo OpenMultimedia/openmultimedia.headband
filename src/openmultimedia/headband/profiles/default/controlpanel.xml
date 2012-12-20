@@ -2,7 +2,7 @@
 <object
     name="portal_controlpanel"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="learn4life.website">
+    i18n:domain="openmultimedia.headband">
 
     <configlet
         title="openmultimedia.headband settings"
@@ -11,7 +11,7 @@
         category="Products"
         condition_expr=""
         url_expr="string:${portal_url}/@@openmultimedia.headband.settings"
-        icon_expr="string:${portal_url}/++resource++openmultimedia.headband.settings/header_icon.png"
+        icon_expr="string:${portal_url}/++resource++openmultimedia.headband/header_icon.png"
         visible="True"
         i18n:attributes="title">
             <permission>Manage portal</permission>
