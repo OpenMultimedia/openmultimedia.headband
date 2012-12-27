@@ -35,7 +35,7 @@
 
 	<browser:viewlet
 	    name="openmultimedia.headband"
-	    manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+	    manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
 	    class=".browser.HeadBandViewlet"
 	    template="templates/headband.pt"
 	    layer=".interfaces.IHeadBandLayer"

@@ -16,16 +16,12 @@ Basic Setup
 	>>> browser.getControl(name='__ac_password').value = SITE_OWNER_PASSWORD
 	>>> browser.getControl(name='submit').click()
 
-	>>> browser.open(portal.absolute_url())
-	>>> 'id="portal-logo"' in browser.contents
-	True
-
-Still the original plone logo
+We doesn't have an image
 
 	>>> '@@openmultimedia.headband/image' in browser.contents
 	False
 
-Replace logo
+Upload one...
 
 	>>> from zope.component import getUtility
 	>>> from plone.registry.interfaces import IRegistry
@@ -37,7 +33,7 @@ Replace logo
 	>>> settings.image = generate_jpeg(200, 100)
 	>>> transaction.commit()
 	
-Custom logo
+And here it is...
 
 	>>> browser.open(portal.absolute_url())
 	>>> '@@openmultimedia.headband/image' in browser.contents

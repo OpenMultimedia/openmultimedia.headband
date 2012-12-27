@@ -1,7 +1,12 @@
 <?xml version="1.0"?>
 <object>
- <order manager="plone.portaltop" skinname="Sunburst Theme">
+ <order manager="plone.portalheader" skinname="Plone Default">
+  <viewlet name="plone.skip_links"/>
+  <viewlet name="plone.personal_bar"/>
   <viewlet name="openmultimedia.headband"/>
-  <viewlet name="plone.header"/>
+  <viewlet name="plone.app.i18n.locales.languageselector"/>
+  <viewlet name="plone.searchbox"/>
+  <viewlet name="plone.logo"/>
+  <viewlet name="plone.global_sections"/>
  </order>
 </object>
