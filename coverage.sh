@@ -13,7 +13,7 @@ else
 fi
 
 if [ ! -f "$REPORT" ]; then
-    createzopecoverage
+    bin/createzopecoverage 1>/dev/null
 fi
 
 # find first percentage value in file (module test coverage) and return it
@@ -23,5 +23,6 @@ if [ $COVERAGE -lt $MINIMUM ]; then
     echo "Insufficient test coverage: $COVERAGE% (minimum acceptable is $MINIMUM%)"
     exit 1
 else
+    echo "Current test coverage: $COVERAGE%"
     exit 0
 fi
