@@ -41,7 +41,7 @@ class ControlPanelTestCase(unittest.TestCase):
     def test_controlpanel_installed(self):
         actions = [a.getAction(self)['id']
                    for a in self.controlpanel.listActions()]
-        self.assertTrue('openmultimedia.headband.settings' in actions,
+        self.assertIn('openmultimedia.headband.settings', actions,
                         'control panel was not installed')
 
     def test_controlpanel_removed_on_uninstall(self):
@@ -49,7 +49,7 @@ class ControlPanelTestCase(unittest.TestCase):
         qi.uninstallProducts(products=[PROJECTNAME])
         actions = [a.getAction(self)['id']
                    for a in self.controlpanel.listActions()]
-        self.assertTrue('openmultimedia.headband.settings' not in actions,
+        self.assertNotIn('openmultimedia.headband.settings', actions,
                         'control panel was not removed')
 
 
@@ -72,4 +72,4 @@ class RegistryTestCase(unittest.TestCase):
         qi.uninstallProducts(products=[PROJECTNAME])
         prefix = 'openmultimedia.headband.interfaces.ISettings.%s'
         registry = getUtility(IRegistry)
-        self.assertFalse(prefix % 'image' in registry)
+        self.assertNotIn(prefix % 'image', registry)

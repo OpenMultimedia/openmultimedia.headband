@@ -1,34 +1,34 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1'
-
-long_description = (
-    open('README.txt').read()
-    + '\n' +
-    'Contributors\n'
-    '============\n'
-    + '\n' +
-    open('CONTRIBUTORS.txt').read()
-    + '\n' +
-    open('CHANGES.txt').read()
-    + '\n')
+version = '1.0'
+description = "A package to convert every image stored and uploaded to a \
+Plone site to PNG format."
+long_description = open("README.txt").read() + "\n" + \
+                   open(os.path.join("docs", "INSTALL.txt")).read() + "\n" + \
+                   open(os.path.join("docs", "CREDITS.txt")).read() + "\n" + \
+                   open(os.path.join("docs", "HISTORY.txt")).read()
 
 setup(name='openmultimedia.headband',
       version=version,
       description="Editable head viewlet.",
       long_description=long_description,
-      # Get more strings from
-      # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
+        "Development Status :: 4 - Beta",
         "Environment :: Web Environment",
         "Framework :: Plone",
+        "Framework :: Plone :: 4.1",
+        "Framework :: Plone :: 4.2",
+        "Framework :: Plone :: 4.3",
+        "Intended Audience :: System Administrators",
+        "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.6",
+        "Programming Language :: Python :: 2.7",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-      keywords='plone viewlet logo editable',
+      keywords='plone viewlet editable',
       author='OpenMultimedia & Juan Pablo Gimenez',
       author_email='jpg@rosario.com',
       url='https://github.com/OpenMultimedia/openmultimedia.headband',
@@ -47,10 +47,7 @@ setup(name='openmultimedia.headband',
                    'interlude', ]
                       },
       entry_points="""
-      # -*- Entry points: -*-
       [z3c.autoinclude.plugin]
       target = plone
       """,
-      setup_requires=["PasteScript"],
-      paster_plugins=["templer.localcommands"],
       )
