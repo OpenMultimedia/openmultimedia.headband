@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0b1'
+version = '1.0b2.dev0'
 description = "This package defines an editable viewlet to add an image \
 headband for the site."
 long_description = open("README.txt").read() + "\n" + \
