@@ -2,8 +2,8 @@ from setuptools import setup, find_packages
 import os
 
 version = '1.0'
-description = "A package to convert every image stored and uploaded to a \
-Plone site to PNG format."
+description = "This package defines an editable viewlet to add an image \
+headband for the site."
 long_description = open("README.txt").read() + "\n" + \
                    open(os.path.join("docs", "INSTALL.txt")).read() + "\n" + \
                    open(os.path.join("docs", "CREDITS.txt")).read() + "\n" + \
@@ -11,7 +11,7 @@ long_description = open("README.txt").read() + "\n" + \
 
 setup(name='openmultimedia.headband',
       version=version,
-      description="Editable head viewlet.",
+      description=description,
       long_description=long_description,
       classifiers=[
         "Development Status :: 4 - Beta",
@@ -29,23 +29,33 @@ setup(name='openmultimedia.headband',
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
       keywords='plone viewlet editable',
-      author='OpenMultimedia & Juan Pablo Gimenez',
+      author="Juan Pablo Gimenez",
       author_email='jpg@rosario.com',
       url='https://github.com/OpenMultimedia/openmultimedia.headband',
-      license='gpl',
+      license='GPLv2',
       packages=find_packages('src'),
       package_dir={'': 'src'},
       namespace_packages=['openmultimedia', ],
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'setuptools',
+          'plone.app.layout',
+          'plone.app.registry',
+          'plone.registry',
+          'Products.CMFCore',
           'Products.CMFPlone',
+          'Products.statusmessages',
+          'setuptools',
+          'z3c.form',
       ],
       extras_require={
-          'test': ['plone.app.testing',
-                   'interlude', ]
-                      },
+          'test': [
+              'interlude',
+              'plone.app.testing',
+              'plone.testing',
+              'unittest2',
+          ]
+      },
       entry_points="""
       [z3c.autoinclude.plugin]
       target = plone
