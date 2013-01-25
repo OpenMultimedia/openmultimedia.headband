@@ -7,4 +7,4 @@ contribution of the following people:
 - Juan Pablo Giménez, original author
 - Héctor Velarde
 
-Development sponsored by Open Multimedia.
+Development sponsored by OpenMultimedia.

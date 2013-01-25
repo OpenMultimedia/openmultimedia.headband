@@ -7,7 +7,8 @@ openmultimedia.headband
 Life, the Universe, and Everything
 ----------------------------------
 
-This package defines a viewlet with an editable image, could be used to replace the plone logo.
+This package defines an editable viewlet to add an image headband for the
+site.
 
 Don't Panic
 -----------
@@ -16,18 +17,23 @@ Configure
 ^^^^^^^^^
 
 - Go to 'Site Setup'.
-- Select 'headband'.
+- Select 'openmultimedia.headband settings'.
 - Upload an image.
+
+You will see the image on top of the site.
 
 Screenshots
 -----------
 
-'headband' control panel
-^^^^^^^^^^^^^^^^^^^^^^^^
+Control Panel
+^^^^^^^^^^^^^
+
 .. figure:: https://github.com/OpenMultimedia/openmultimedia.headband/raw/master/control_panel.png
     :align: center
-    :height: 582px
-    :width: 263px
+    :height: 220px
+    :width: 563px
+
+    Control Panel
 
 Mostly Harmless
 ---------------
@@ -35,6 +41,6 @@ Mostly Harmless
 .. image:: https://secure.travis-ci.org/OpenMultimedia/openmultimedia.headband.png
     :target: http://travis-ci.org/OpenMultimedia/openmultimedia.headband
 
-Have an idea? Found a bug? Let us know by `opening a support ticket`_.
+Got an idea? Found a bug? Let us know by `opening a support ticket`_.
 
 .. _`opening a support ticket`: https://github.com/OpenMultimedia/openmultimedia.headband/issues
