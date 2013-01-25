@@ -42,7 +42,7 @@ class ControlPanelTestCase(unittest.TestCase):
         actions = [a.getAction(self)['id']
                    for a in self.controlpanel.listActions()]
         self.assertIn('openmultimedia.headband.settings', actions,
-                        'control panel was not installed')
+                      'control panel was not installed')
 
     def test_controlpanel_removed_on_uninstall(self):
         qi = self.portal['portal_quickinstaller']
@@ -50,7 +50,7 @@ class ControlPanelTestCase(unittest.TestCase):
         actions = [a.getAction(self)['id']
                    for a in self.controlpanel.listActions()]
         self.assertNotIn('openmultimedia.headband.settings', actions,
-                        'control panel was not removed')
+                         'control panel was not removed')
 
 
 class RegistryTestCase(unittest.TestCase):
