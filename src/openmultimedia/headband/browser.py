@@ -27,7 +27,7 @@ class HeadBandViewlet(BaseLogoViewlet):
         registry = getUtility(IRegistry)
         setting = registry.forInterface(ISettings)
         if setting.image:
-            self.image_tag = '<img src="%s%s" />' % \
+            self.image_tag = '<img id="headband" src="%s%s" />' % \
                              (self.context.absolute_url(),
                              '/@@openmultimedia.headband/image')
 
