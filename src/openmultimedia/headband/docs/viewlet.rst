@@ -47,3 +47,9 @@ And here it is...
 	Traceback (most recent call last):
 	...
 	HTTPError: HTTP Error 500: Internal Server Error
+
+Absolute urls
+
+   >>> browser.open(portal.test_folder.absolute_url())
+   >>> '%s/@@openmultimedia.headband/image' % portal.absolute_url() in browser.contents
+   True

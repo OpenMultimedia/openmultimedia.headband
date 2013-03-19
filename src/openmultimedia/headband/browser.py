@@ -1,5 +1,6 @@
 from zope.interface import implements
 from zope.component import getUtility
+from zope.component import getMultiAdapter
 from zope.publisher.interfaces import IPublishTraverse
 from zope.i18nmessageid import MessageFactory
 from z3c.form import button
@@ -26,9 +27,11 @@ class HeadBandViewlet(BaseLogoViewlet):
         super(HeadBandViewlet, self).update()
         registry = getUtility(IRegistry)
         setting = registry.forInterface(ISettings)
+        portal_state = getMultiAdapter((self.context, self.request),
+                                       name=u'plone_portal_state')        
         if setting.image:
             self.image_tag = '<img id="headband" src="%s%s" />' % \
-                             (self.context.absolute_url(),
+                             (portal_state.portal_url(),
                              '/@@openmultimedia.headband/image')
 
 
