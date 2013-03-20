@@ -14,6 +14,7 @@ from plone.app.layout.viewlets.common import LogoViewlet as BaseLogoViewlet
 from plone.registry.interfaces import IRegistry
 from plone.app.registry.browser.controlpanel import RegistryEditForm
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
+from plone.cachepurging.interfaces import IPurger
 
 from openmultimedia.headband.interfaces import ISettings
 
@@ -71,7 +72,7 @@ class SettingsEditForm(RegistryEditForm):
     Define form logic
     """
     schema = ISettings
-    label = u"openmultimedia.headband settings"
+    label = u"Headband Settings"
 
     @button.buttonAndHandler(_(u"Save"), name='save')
     def handleSave(self, action):
@@ -80,6 +81,10 @@ class SettingsEditForm(RegistryEditForm):
             data['image'] = NOT_CHANGED
         self.applyChanges(data)
         IStatusMessage(self.request).addStatusMessage(_(u"Changes saved."), "info")
+        portal_state = getMultiAdapter((self.context, self.request),
+                                       name=u'plone_portal_state')        
+        purger = getUtility(IPurger)
+        purger.purgeSync(portal_state.portal_url() + '/@@openmultimedia.headband/image')
         self.request.response.redirect("%s/%s" % (self.context.absolute_url(), self.control_panel_view))
 
     @button.buttonAndHandler(_(u"Cancel"), name='cancel')
