@@ -17,6 +17,7 @@ from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.cachepurging.interfaces import IPurger
 
 from openmultimedia.headband.interfaces import ISettings
+from zope.component.interfaces import ComponentLookupError
 
 
 _ = MessageFactory('plone')
@@ -29,7 +30,7 @@ class HeadBandViewlet(BaseLogoViewlet):
         registry = getUtility(IRegistry)
         setting = registry.forInterface(ISettings)
         portal_state = getMultiAdapter((self.context, self.request),
-                                       name=u'plone_portal_state')        
+                                       name=u'plone_portal_state')
         if setting.image:
             self.image_tag = '<img id="headband" src="%s%s" />' % \
                              (portal_state.portal_url(),
@@ -82,9 +83,12 @@ class SettingsEditForm(RegistryEditForm):
         self.applyChanges(data)
         IStatusMessage(self.request).addStatusMessage(_(u"Changes saved."), "info")
         portal_state = getMultiAdapter((self.context, self.request),
-                                       name=u'plone_portal_state')        
-        purger = getUtility(IPurger)
-        purger.purgeSync(portal_state.portal_url() + '/@@openmultimedia.headband/image')
+                                       name=u'plone_portal_state')
+        try:
+            purger = getUtility(IPurger)
+            purger.purgeSync(portal_state.portal_url() + '/@@openmultimedia.headband/image')
+        except ComponentLookupError:
+            pass
         self.request.response.redirect("%s/%s" % (self.context.absolute_url(), self.control_panel_view))
 
     @button.buttonAndHandler(_(u"Cancel"), name='cancel')
