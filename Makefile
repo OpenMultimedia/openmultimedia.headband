@@ -23,7 +23,7 @@ ack-install:
 nodejs-install:
 	sudo apt-add-repository ppa:chris-lea/node.js -y
 	sudo apt-get update 1>/dev/null
-	sudo apt-get install nodejs npm -y
+	sudo apt-get install nodejs -y
 
 csslint-install: nodejs-install
 	npm install csslint -g
